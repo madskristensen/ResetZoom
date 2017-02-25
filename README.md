@@ -2,8 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/w2iwr8a2l1yar4w0?svg=true)](https://ci.appveyor.com/project/madskristensen/resetzoom)
 
-<!-- Update the VS Gallery link after you upload the VSIX-->
-Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/[GuidFromGallery])
+Download this extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ResetZoom)
 or get the [CI build](http://vsixgallery.com/extension/0a987da3-4577-4eec-aaa9-a4c2cdd5d22b/).
 
 ---------------------------------------
