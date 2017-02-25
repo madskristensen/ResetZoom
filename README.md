@@ -12,20 +12,12 @@ Adds a command to reset the editor zoom level to 100% with a customizable keyboa
 
 See the [change log](CHANGELOG.md) for changes and road map.
 
-## Features
+![Zoom control](art/zoom-control.png)
 
-- Feature 1
-- Feature 2
-  - Sub feature
+## Reset zoom to 100%
+By default, the keyboard shortcut is `Ctrl+0,Ctrl+0` but can be changed to be whatever you like. 
 
-### Feature 1
-Describe feature 1. Add screenshots/code samples etc.
-
-### Feature 2
-Describe feature 2. Add screenshots/code samples etc.
-
-#### Sub feature
-Describe sub feature. Add screenshots/code samples etc.
+Go to **Tools -> Options -> Environment -> Keyboard** and look for the command `View.ZoomReset` to change the keyboard shortcut.
 
 ## Contribute
 Check out the [contribution guidelines](.github/CONTRIBUTING.md)
