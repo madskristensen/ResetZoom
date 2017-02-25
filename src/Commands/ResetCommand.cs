@@ -1,5 +1,4 @@
 ﻿using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
@@ -45,16 +44,28 @@ namespace ResetZoom
 
         private void Execute(object sender, EventArgs e)
         {
-            var dte = (DTE2)ServiceProvider.GetService(typeof(DTE));
+            var dte = (DTE)ServiceProvider.GetService(typeof(DTE));
 
             if (dte.ActiveDocument == null)
                 return;
 
-            IWpfTextView view = GetCurentTextView();
+            try
+            {
+                IWpfTextView view = GetCurentTextView();
 
-            if (view == null || view.ZoomLevel == 100)
-                return;
+                if (view == null || view.ZoomLevel == 100)
+                    return;
 
+                ResetZoom(dte, view);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex);
+            }
+        }
+
+        private static void ResetZoom(_DTE dte, IWpfTextView view)
+        {
             if (view.ZoomLevel > 100)
             {
                 while (view.ZoomLevel > 100)
