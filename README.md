@@ -7,9 +7,9 @@ or get the [CI build](http://vsixgallery.com/extension/0a987da3-4577-4eec-aaa9-a
 
 ---------------------------------------
 
-Adds a command to reset the editor zoom level to 100% with a customizable keyboard shortcut
-
 See the [change log](CHANGELOG.md) for changes and road map.
+
+Zooming in the Visual Studio editor is easy using the mouse wheel or trackpad. However, there is no command in Visual Studio for resetting the zoom level back to 100%. That's what this extension provides.
 
 ![Zoom control](art/zoom-control.png)
 
