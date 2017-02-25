@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidPackage">
+    <Buttons>
+      <Button guid="guidPackageCmdSet" id="ResetCommand" priority="0x0100" type="Button">
+          <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <ButtonText>Reset Zoom Level</ButtonText>
+            <LocCanonicalName>View.ZoomReset</LocCanonicalName>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+    <KeyBindings>
+        <KeyBinding guid="guidPackageCmdSet" id="ResetCommand" mod1="Control" key1="0" mod2="Control"  key2="0" editor="guidVSStd97"/>
+    </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidPackage" value="{fdb8534b-88ef-4dc8-925b-78cefe32f930}" />
+
+    <GuidSymbol name="guidPackageCmdSet" value="{c14d9719-5a4a-4497-8974-99cb6cd24d61}">
+      <IDSymbol name="ResetCommand" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
