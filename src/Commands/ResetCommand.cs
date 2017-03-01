@@ -66,14 +66,19 @@ namespace ResetZoom
 
         private static void ResetZoom(_DTE dte, IWpfTextView view)
         {
-            if (view.ZoomLevel > 100)
+            int defaultZoom = ResetZoomPackage.Options.DefaultZoomLevel;
+
+            if (view.ZoomLevel == defaultZoom)
+                return;
+
+            if (view.ZoomLevel > defaultZoom)
             {
-                while (view.ZoomLevel > 100)
+                while (Math.Round(view.ZoomLevel) > defaultZoom)
                     dte.ExecuteCommand("View.ZoomOut");
             }
             else
             {
-                while (view.ZoomLevel < 100)
+                while (Math.Round(view.ZoomLevel) < defaultZoom)
                     dte.ExecuteCommand("View.ZoomIn");
             }
         }
