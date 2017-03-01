@@ -51,7 +51,7 @@ namespace ResetZoom
 
             try
             {
-                IWpfTextView view = GetCurentTextView();
+                IWpfTextView view = GetCurrentTextView();
 
                 if (view == null || view.ZoomLevel == 100)
                     return;
@@ -83,7 +83,7 @@ namespace ResetZoom
             }
         }
 
-        public IWpfTextView GetCurentTextView()
+        public IWpfTextView GetCurrentTextView()
         {
             return GetTextView();
         }
