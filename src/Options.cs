@@ -7,21 +7,18 @@ namespace ResetZoom
     {
         [Category("General")]
         [DisplayName("Default zoom level")]
-        [Description("Set the default zoom level to a number between 20 and 200")]
+        [Description("Set the default zoom level to a number between 20 and 400")]
         [DefaultValue(100)]
         public int DefaultZoomLevel { get; set; } = 100;
 
         protected override void OnApply(PageApplyEventArgs e)
         {
-            if (DefaultZoomLevel > 200 || DefaultZoomLevel < 20)
-            {
-                System.Windows.Forms.MessageBox.Show("Default zoom level must be between 20 and 200");
-                e.ApplyBehavior = ApplyKind.CancelNoNavigate;
-            }
-            else
-            {
-                base.OnApply(e);
-            }
+            if (DefaultZoomLevel > 400)
+                DefaultZoomLevel = 400;
+            else if (DefaultZoomLevel < 20)
+                DefaultZoomLevel = 20;
+
+            base.OnApply(e);
         }
     }
 }
