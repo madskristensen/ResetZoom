@@ -9,7 +9,12 @@ download in the
 # Change log
 
 These are the changes to each version that has been released
-on the official Visual Studio extension gallery.
+on the official Visual Studio extension gallery
+
+## 1.1
+
+- [x] Custom default zoom level option
+- [x] Accurate zoom reset
 
 ## 1.0
 

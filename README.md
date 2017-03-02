@@ -19,7 +19,7 @@ By default, the keyboard shortcut is `Ctrl+0,Ctrl+0` but can be changed to be wh
 Go to **Tools -> Options -> Environment -> Keyboard** and look for the command `View.ZoomReset` to change the keyboard shortcut.
 
 ### Custom zoom default
-You can set what the default zoom level should be in **Tools -> Options -> Environment -> Reset Zoom**. You should chose a value that is supported by the dropdown zoom control in the editor e.g. 91, 110, 121 etc.
+You can set what the default zoom level should be in **Tools -> Options -> Environment -> Reset Zoom**.
 
 ![Options](art/options.png)
 

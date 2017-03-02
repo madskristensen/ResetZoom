@@ -11,7 +11,7 @@ namespace ResetZoom
         public const string Name = "Reset Zoom";
         public const string Description = @"Adds a command to reset the editor zoom level to 100% with a customizable keyboard shortcut";
         public const string Language = "en-US";
-        public const string Version = "1.0";
+        public const string Version = "1.1";
         public const string Author = "Mads Kristensen";
         public const string Tags = "zoom, reset";
     }

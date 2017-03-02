@@ -46,17 +46,17 @@ namespace ResetZoom
         {
             var dte = (DTE)ServiceProvider.GetService(typeof(DTE));
 
-            if (dte.ActiveDocument == null)
+            if (dte?.ActiveDocument == null)
                 return;
 
             try
             {
                 IWpfTextView view = GetCurrentTextView();
 
-                if (view == null || view.ZoomLevel == 100)
-                    return;
-
-                ResetZoom(dte, view);
+                if (view != null)
+                {
+                    ResetZoom(dte, view);
+                }
             }
             catch (Exception ex)
             {
@@ -68,19 +68,12 @@ namespace ResetZoom
         {
             int defaultZoom = ResetZoomPackage.Options.DefaultZoomLevel;
 
-            if (view.ZoomLevel == defaultZoom)
+            if (Math.Round(view.ZoomLevel) == defaultZoom)
                 return;
 
-            if (view.ZoomLevel > defaultZoom)
-            {
-                while (Math.Round(view.ZoomLevel) > defaultZoom)
-                    dte.ExecuteCommand("View.ZoomOut");
-            }
-            else
-            {
-                while (Math.Round(view.ZoomLevel) < defaultZoom)
-                    dte.ExecuteCommand("View.ZoomIn");
-            }
+            view.ZoomLevel = defaultZoom;
+            dte.ExecuteCommand("View.ZoomOut");
+            dte.ExecuteCommand("View.ZoomIn");
         }
 
         public IWpfTextView GetCurrentTextView()

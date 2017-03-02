@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="0a987da3-4577-4eec-aaa9-a4c2cdd5d22b" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
+        <Identity Id="0a987da3-4577-4eec-aaa9-a4c2cdd5d22b" Version="1.1" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>Reset Zoom</DisplayName>
         <Description xml:space="preserve">Adds a command to reset the editor zoom level to 100% with a customizable keyboard shortcut</Description>
         <MoreInfo>https://github.com/madskristensen/resetzoom</MoreInfo>
