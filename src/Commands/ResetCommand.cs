@@ -1,99 +1,31 @@
-﻿using EnvDTE;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Editor;
+﻿using Community.VisualStudio.Toolkit;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.VisualStudio.TextManager.Interop;
-using System;
-using System.ComponentModel.Design;
+using Task = System.Threading.Tasks.Task;
 
 namespace ResetZoom
 {
-    internal sealed class ResetCommand
+    [Command(PackageGuids.guidPackageCmdSetString, PackageIds.ResetCommand)]
+    internal sealed class ResetZoomLevel : BaseCommand<ResetZoomLevel>
     {
-        private readonly Package _package;
-
-        private ResetCommand(Package package)
+        protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
-            _package = package;
+            DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
 
-            if (ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
+            if (docView?.TextView != null)
             {
-                var menuCommandID = new CommandID(PackageGuids.guidPackageCmdSet, PackageIds.ResetCommand);
-                var menuItem = new MenuCommand(Execute, menuCommandID);
-                commandService.AddCommand(menuItem);
+                await ResetZoomAsync(docView.TextView);
             }
         }
 
-        public static ResetCommand Instance
+        private static async Task ResetZoomAsync(IWpfTextView view)
         {
-            get;
-            private set;
-        }
+            Options options = await Options.GetLiveInstanceAsync();
+            view.ZoomLevel = options.DefaultZoomLevel;
 
-        private IServiceProvider ServiceProvider
-        {
-            get { return _package; }
-        }
-
-        public static void Initialize(Package package)
-        {
-            Instance = new ResetCommand(package);
-        }
-
-        private void Execute(object sender, EventArgs e)
-        {
-            var dte = (DTE)ServiceProvider.GetService(typeof(DTE));
-
-            if (dte?.ActiveDocument == null)
-                return;
-
-            try
-            {
-                IWpfTextView view = GetCurrentTextView();
-
-                if (view != null)
-                {
-                    ResetZoom(dte, view);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex);
-            }
-        }
-
-        private static void ResetZoom(_DTE dte, IWpfTextView view)
-        {
-            int defaultZoom = ResetZoomPackage.Options.DefaultZoomLevel;
-
-            if (Math.Round(view.ZoomLevel) == defaultZoom)
-                return;
-
-            view.ZoomLevel = defaultZoom;
-            dte.ExecuteCommand("View.ZoomOut");
-            dte.ExecuteCommand("View.ZoomIn");
-        }
-
-        public IWpfTextView GetCurrentTextView()
-        {
-            return GetTextView();
-        }
-
-        public IWpfTextView GetTextView()
-        {
-            var compService = ServiceProvider.GetService(typeof(SComponentModel)) as IComponentModel;
-            IVsEditorAdaptersFactoryService editorAdapter = compService.GetService<IVsEditorAdaptersFactoryService>();
-            return editorAdapter.GetWpfTextView(GetCurrentNativeTextView());
-        }
-
-        public IVsTextView GetCurrentNativeTextView()
-        {
-            var textManager = (IVsTextManager)ServiceProvider.GetService(typeof(SVsTextManager));
-
-            ErrorHandler.ThrowOnFailure(textManager.GetActiveView(1, null, out IVsTextView activeView));
-            return activeView;
+            await VS.Commands.ExecuteAsync("View.ZoomIn");
+            await VS.Commands.ExecuteAsync("View.ZoomOut");
         }
     }
 }

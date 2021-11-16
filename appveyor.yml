@@ -1,4 +1,4 @@
-image: Visual Studio 2017
+image: Visual Studio 2022
 
 install:
 - ps: (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
@@ -11,5 +11,7 @@ build_script:
   - nuget restore -Verbosity quiet
   - msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
 
-after_test:
+test: off
+
+deploy_script:
   - ps: Vsix-PushArtifacts | Vsix-PublishToGallery

@@ -1,24 +1,34 @@
-﻿using Microsoft.VisualStudio.Shell;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Threading.Tasks;
+using Community.VisualStudio.Toolkit;
 
 namespace ResetZoom
 {
-    public class Options : DialogPage
+    internal class OptionsProvider
+    {
+        public class General : BaseOptionPage<Options> { }
+    }
+
+    public class Options : BaseOptionModel<Options>
     {
         [Category("General")]
         [DisplayName("Default zoom level")]
-        [Description("Set the default zoom level to a number between 20 and 400")]
+        [Description("Set the default zoom level to a number between 50 and 350")]
         [DefaultValue(100)]
         public int DefaultZoomLevel { get; set; } = 100;
 
-        protected override void OnApply(PageApplyEventArgs e)
+        public override Task SaveAsync()
         {
-            if (DefaultZoomLevel > 400)
-                DefaultZoomLevel = 400;
-            else if (DefaultZoomLevel < 20)
-                DefaultZoomLevel = 20;
+            if (DefaultZoomLevel > 350)
+            {
+                DefaultZoomLevel = 350;
+            }
+            else if (DefaultZoomLevel < 50)
+            {
+                DefaultZoomLevel = 50;
+            }
 
-            base.OnApply(e);
+            return base.SaveAsync();
         }
     }
 }
