@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Community.VisualStudio.Toolkit;
 
@@ -6,6 +7,7 @@ namespace ResetZoom
 {
     internal class OptionsProvider
     {
+        [ComVisible(true)]
         public class General : BaseOptionPage<Options> { }
     }
 
