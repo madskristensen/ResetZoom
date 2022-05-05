@@ -91,7 +91,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Community.VisualStudio.Toolkit.15">
+    <PackageReference Include="Community.VisualStudio.Toolkit.15" ExcludeAssets="runtime">
       <Version>15.0.445</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools">
