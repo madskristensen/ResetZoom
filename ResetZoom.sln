@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26212.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.35713.233 main
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResetZoom", "src\ResetZoom.csproj", "{A57CD016-22EB-4C13-BB88-AF6F9804A7C7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F9D25286-9CF4-4AE7-843C-50F2449BC61C}"
-	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		CHANGELOG.md = CHANGELOG.md
-		README.md = README.md
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
